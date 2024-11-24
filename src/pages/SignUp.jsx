@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const SignUp = () => {
   const { createUser } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,10 +13,10 @@ const SignUp = () => {
     const password = form.password.value;
 
     try {
-      // Await the createUser function to handle the promise returned by Firebase
       await createUser(email, password);
       console.log("User created successfully");
-      // Optionally, you can navigate the user to another page or perform additional actions after successful signup
+
+      navigate("/");
     } catch (error) {
       console.error("Error creating user:", error);
     }

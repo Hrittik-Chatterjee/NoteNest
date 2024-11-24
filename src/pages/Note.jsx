@@ -91,7 +91,7 @@ const Note = () => {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(noteWithUserEmail), // Pass note with email
+            body: JSON.stringify(noteWithUserEmail),
           }
         );
 
@@ -99,8 +99,8 @@ const Note = () => {
           const data = await response.json();
           console.log("Note saved:", data);
           alert("Note saved successfully!");
-          setNote({ title: "", content: "" }); // Reset form
-          fetchNotes(); // Refresh the notes list
+          setNote({ title: "", content: "" });
+          fetchNotes();
         } else {
           console.error("Failed to save note:", response.statusText);
           alert("Failed to save the note. Please try again.");
@@ -132,7 +132,7 @@ const Note = () => {
         alert("Note updated successfully!");
         setNote({ title: "", content: "" });
         setSelectedNoteId(null);
-        fetchNotes(); // Refresh the notes list
+        fetchNotes();
       } else {
         console.error("Failed to update note:", response.statusText);
         alert("Failed to update the note. Please try again.");
@@ -156,7 +156,7 @@ const Note = () => {
       if (response.ok) {
         console.log("Note deleted");
         alert("Note deleted successfully!");
-        fetchNotes(); // Refresh the notes list after deletion
+        fetchNotes();
       } else {
         console.error("Failed to delete note:", response.statusText);
         alert("Failed to delete the note. Please try again.");
@@ -178,7 +178,7 @@ const Note = () => {
       title: selectedNote.title,
       content: selectedNote.content,
     });
-    setSelectedNoteId(selectedNote._id); // Set the selected note ID for update
+    setSelectedNoteId(selectedNote._id);
   };
 
   return (
